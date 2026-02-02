@@ -10,8 +10,6 @@
             --text-color: #e0e0e0;
             --accent-color: red;
             --dim-text: rgb(172, 172, 172);
-            --head-margin: 1rem;
-            --scale: 100;
         }
         html {
             height: 100%;
@@ -22,9 +20,11 @@
             position: fixed;
             background-color: black;
             width: 100%;
-            height: 100%;
+            height: 200%;
             top: 0;
             left: 0;
+            padding: 0;
+            margin: 0;
         }
 
         body {
@@ -38,10 +38,11 @@
             z-index: 1;
             position: fixed;
             top: 0;
+            left: 0;
             color: rgb(255, 255, 255);
-            font-size: 7rem;
+            font-size: 6rem;
             text-transform: uppercase;
-            line-height: 5rem;
+            line-height: 4rem;
             letter-spacing: -3px;
             margin: 0;
             padding: 0;
@@ -49,8 +50,10 @@
         }
 
         #scrolly-container {
+            z-index: 0;
             position: absolute;
-            top: 16rem;
+            top: 30%;
+            width: 90%;
         }
 
         .exposure {
@@ -58,7 +61,7 @@
             background-color: black;
             width: inherit;
             padding: 10px;
-            margin: 1%
+            margin: 2%
         }
 
         h2 {
@@ -87,7 +90,7 @@
         .exposure.natural {border-left: 30px solid; --cat-color: green; border-color: var(--cat-color);}
         .exposure.medical {border-left: 30px solid; --cat-color: blue; border-color: var(--cat-color);}
         .exposure.occupation {border-bottom: 30px solid; --cat-color: yellow; border-color: var(--cat-color);}
-        .exposure.space {border-bottom: 30px solid; --cat-color: rgb(58, 58, 58); border-color: var(--cat-color); } 
+        .exposure.space {border-bottom: 30px solid; --cat-color: rgb(236, 236, 236); border-color: var(--cat-color); } 
         .exposure.consumer {border-left: 30px solid; --cat-color: magenta; border-color: var(--cat-color); }
         .exposure.catastrophe {border-bottom: 30px solid; --cat-color: red; border-color: var(--cat-color); } 
         .exposure.industrial {border-bottom: 30px solid; --cat-color: brown; border-color: var(--cat-color); } 
@@ -142,7 +145,7 @@
     </script>
 
     <div class="title">
-        <h1>wie viel strahlung hat</h1>
+        <h1>wie viel sievert hat</h1>
     </div>
 
     <div id="scrolly-container">
@@ -168,8 +171,8 @@
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 10px);" data-source="BfS">
-            <h2><span class="mSv-val">0,01 mSv</span> Panorama-Kieferaufnahme</h2>
-            <p>Vollständige 2D-Darstellung des Gebisses (OPG).</p>
+            <h2><span class="mSv-val">0,01 mSv</span> Panorama-Kieferaufnahme (OPG)</h2>
+            <p>Vollständige 2D-Darstellung des Gebisses.</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 20px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
@@ -177,19 +180,24 @@
             <p>Standardaufnahme der Lunge (stehend oder liegend). <br>DRW: 12-15 cGy·cm²</p>
         </div>
 
+        <div class="exposure consumer" style="top: calc(50vh + 30px);" data-source="Text">
+            <h2><span class="mSv-val">0,03 mSv</span> Inlandsflug (USA)</h2>
+            <p>Ein transkontinentaler Flug (Küste zu Küste). Kosmische Strahlung in Reiseflughöhe.</p>
+        </div>
+
         <div class="exposure medical" style="top: calc(50vh + 60px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
             <h2><span class="mSv-val">0,06 mSv</span> Rö Thorax seitlich</h2>
             <p>Ergänzende Aufnahme des Brustkorbs. <br>DRW: 40 cGy·cm²</p>
         </div>
 
-        <div class="exposure consumer" style="top: calc(50vh + 100px);" data-source="BfS SSR Bericht">
-            <h2><span class="mSv-val">0,10 mSv</span> Transatlantikflug</h2>
-            <p>Kosmische Höhenstrahlung bei einem Hin- und Rückflug (z. B. Frankfurt-NY).</p>
+        <div class="exposure occupation" style="top: calc(50vh + 80px);" data-source="Forschungsdaten">
+            <h2><span class="mSv-val">0,08 mSv</span> Medizinisches Personal (MTRA)</h2>
+            <p>Median der jährlichen Dosis für Personal in der Röntgendiagnostik.</p>
         </div>
 
-        <div class="exposure medical" style="top: calc(50vh + 100px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
-            <h2><span class="mSv-val">0,10 mSv</span> Hüfte (pro Ebene)</h2>
-            <p>Untersuchung des Hüftgelenks. <br>DRW: 100 cGy·cm²</p>
+        <div class="exposure consumer" style="top: calc(50vh + 100px);" data-source="BfS SSR Bericht">
+            <h2><span class="mSv-val">0,10 mSv</span> Transatlantikflug / Hüfte</h2>
+            <p>Hin- und Rückflug (z. B. FRA-NY) oder Röntgenaufnahme der Hüfte. <br>DRW (Hüfte): 100 cGy·cm²</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 100px);" data-source="BfS" bfs-table="<br>DRW für DVT-Untersuchungen am Erwachsenen">
@@ -213,18 +221,13 @@
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 240px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
-            <h2><span class="mSv-val">0,24 mSv</span> Rö Brustwirbelsäule lat / Mammographie</h2>
+            <h2><span class="mSv-val">0,24 mSv</span> Rö BWS lat / Mammographie</h2>
             <p>Seitliche BWS oder Brustkrebsvorsorge (pro Ebene). <br>DRW: 120 cGy·cm² / 2,0 mGy AGD</p>
         </div>
 
-        <div class="exposure medical" style="top: calc(50vh + 250px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Kind">
-            <h2><span class="mSv-val">0,25 mSv</span> Becken (Kind 10-15 J.)</h2>
-            <p>Hüft- oder Beckenaufnahme bei 32 bis < 56 kg. <br>DRW: 50 cGy·cm²</p>
-        </div>
-
-        <div class="exposure medical" style="top: calc(50vh + 280px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
-            <h2><span class="mSv-val">0,28 mSv</span> Becken a.p./p.a. (Erwachsene)</h2>
-            <p>Übersichtsaufnahme des Beckengürtels. <br>DRW: 230 cGy·cm²</p>
+        <div class="exposure natural" style="top: calc(50vh + 300px);" data-source="UNSCEAR">
+            <h2><span class="mSv-val">0,30 mSv</span> Kosmische Strahlung (Meereshöhe)</h2>
+            <p>Jährliche Durchschnittsbelastung durch Weltraumstrahlung am Boden.</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 300px);" data-source="BfS" bfs-table="<br>DRW für mammographische Untersuchungen">
@@ -232,14 +235,19 @@
             <p>Schichtaufnahme der Brust (pro Ebene). <br>DRW: 2,5 mGy AGD</p>
         </div>
 
-        <div class="exposure medical" style="top: calc(50vh + 320px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
-            <h2><span class="mSv-val">0,32 mSv</span> Rö Abdomen a.p./p.a.</h2>
-            <p>Darstellung des Bauchraums. <br>DRW: 200 cGy·cm²</p>
-        </div>
-
         <div class="exposure medical" style="top: calc(50vh + 400px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
             <h2><span class="mSv-val">0,40 mSv</span> Rö Lendenwirbelsäule a.p.</h2>
             <p>Standarduntersuchung der LWS. <br>DRW: 200 cGy·cm²</p>
+        </div>
+
+        <div class="exposure natural" style="top: calc(50vh + 500px);" data-source="UNSCEAR">
+            <h2><span class="mSv-val">0,50 mSv</span> Terrestrische Strahlung</h2>
+            <p>Jährliche Dosis aus Boden und Baumaterialien (globaler Durchschnitt).</p>
+        </div>
+
+        <div class="exposure natural" style="top: calc(50vh + 600px);" data-source="UNSCEAR">
+            <h2><span class="mSv-val">0,60 mSv</span> Höhenlage (Denver, 1600m)</h2>
+            <p>Jährliche kosmische Strahlung in höheren Städten (fast doppelt so hoch wie Meereshöhe).</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 660px);" data-source="BfS" bfs-table="<br>DRW für konventionelle Projektionsaufnahmen am Erwachsenen">
@@ -248,8 +256,8 @@
         </div>
 
         <div class="exposure occupation" style="top: calc(50vh + 1000px);" data-source="StrlSchV 2018 § 80">
-            <h2><span class="mSv-val">1,0 mSv</span> Grenzwert Bevölkerung</h2>
-            <p>Max. künstliche Dosis pro Jahr für Einzelpersonen (ohne Medizin).</p>
+            <h2><span class="mSv-val">1,0 mSv</span> Grenzwert Bevölkerung / Kernkraft</h2>
+            <p>Max. künstliche Jahresdosis (Bevölkerung) oder Durchschnittsdosis eines Kernkraftwerkers.</p>
         </div>
 
         <div class="exposure natural" style="top: calc(50vh + 1260px);" data-source="Text">
@@ -282,6 +290,11 @@
             <p>Weltweiter jährlicher Durchschnittswert natürlicher Strahlung.</p>
         </div>
 
+        <div class="exposure occupation" style="top: calc(50vh + 3000px);" data-source="Text">
+            <h2><span class="mSv-val">2,0 – 4,0 mSv</span> Interventionelle Radiologen</h2>
+            <p>Jährliche Dosis durch Streustrahlung im Herzkatheterlabor/Angiographie.</p>
+        </div>
+
         <div class="exposure medical" style="top: calc(50vh + 3500px);" data-source="BfS" bfs-table="<br>DRW für CT-Untersuchungen am Erwachsenen">
             <h2><span class="mSv-val">3,5 mSv</span> CT Thorax</h2>
             <p>Schnittbild des Brustkorbs (z.B. Tumorsuche). <br>DRW: 8 mGy CTDIvol</p>
@@ -293,8 +306,13 @@
         </div>
 
         <div class="exposure occupation" style="top: calc(50vh + 6000px);" data-source="BfS">
-            <h2><span class="mSv-val">6,0 mSv</span> Kontrollbereich</h2>
-            <p>Jahresschwellenwert für strahlenüberwachte Arbeitsbereiche.</p>
+            <h2><span class="mSv-val">6,0 mSv</span> Kontrollbereich / Flugpersonal</h2>
+            <p>Schwelle für strahlenüberwachte Bereiche oder "hohe" Dosis bei Flugpersonal (jährlich).</p>
+        </div>
+
+        <div class="exposure medical" style="top: calc(50vh + 7000px);" data-source="Text">
+            <h2><span class="mSv-val">7,0 mSv</span> Ganzkörper PET-Scan</h2>
+            <p>Nuklearmedizinische Untersuchung mit radioaktivem Tracer (FDG).</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 8100px);" data-source="BfS" bfs-table="<br>DRW für CT-Untersuchungen am Erwachsenen">
@@ -304,17 +322,12 @@
 
         <div class="exposure consumer" style="top: calc(50vh + 8800px);" data-source="Text">
             <h2><span class="mSv-val">8,8 mSv</span> Rauchen (1 Jahr)</h2>
-            <p>20 Zigaretten/Tag. Polonium-210 lagert sich in der Lunge ab. 4x höher als Hintergrund.</p>
-        </div>
-
-        <div class="exposure medical" style="top: calc(50vh + 9100px);" data-source="BfS" bfs-table="<br>DRW für diagnostische Durchleuchtungsuntersuchungen am Erwachsenen">
-            <h2><span class="mSv-val">9,1 mSv</span> Arteriographie Becken-Bein</h2>
-            <p>Gefäßuntersuchung der unteren Extremitäten. <br>DRW: 3500 cGy·cm²</p>
+            <p>20 Zigaretten/Tag. Polonium-210 in der Lunge. Entspricht ca. 4x dem natürl. Hintergrund.</p>
         </div>
 
         <div class="exposure natural" style="top: calc(50vh + 10000px);" data-source="Text">
             <h2><span class="mSv-val">10,0 mSv</span> Monazitsand (Kerala)</h2>
-            <p>Jährliche Dosis durch thoriumhaltigen Sand in Indien (Durchschnitt).</p>
+            <p>Jährliche Dosis durch thoriumhaltigen Sand in Indien (Durchschnitt vor Ort).</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 11300px);" data-source="BfS" bfs-table="<br>DRW für CT-Untersuchungen am Erwachsenen">
@@ -334,7 +347,7 @@
 
         <div class="exposure occupation" style="top: calc(50vh + 15000px);" data-source="BfS">
             <h2><span class="mSv-val">15,0 mSv</span> Augenlinsen-Grenzwert</h2>
-            <p>Jährlicher Grenzwert zur Vermeidung von Strahlenschäden am Auge.</p>
+            <p>Jährlicher Grenzwert zur Vermeidung von Strahlenschäden (Katarakt).</p>
         </div>
 
         <div class="exposure occupation" style="top: calc(50vh + 20000px);" data-source="Gesetz / BfS">
@@ -344,7 +357,12 @@
 
         <div class="exposure medical" style="top: calc(50vh + 24000px);" data-source="Text">
             <h2><span class="mSv-val">24,0 mSv</span> Ganzkörper PET-CT</h2>
-            <p>Nuklearmedizin (Tumorsuche). Entspricht ca. 10 Jahren natürlicher Strahlung.</p>
+            <p>Kombination aus Nuklearmedizin und CT. Entspricht ca. 10 Jahren Naturstrahlung.</p>
+        </div>
+
+        <div class="exposure catastrophe" style="top: calc(50vh + 30000px);" data-source="Text">
+            <h2><span class="mSv-val">30,0 mSv</span> Tschernobyl Evakuierte</h2>
+            <p>Durchschnittsdosis der 1986 umgesiedelten Anwohner.</p>
         </div>
 
         <div class="exposure occupation" style="top: calc(50vh + 50000px);" data-source="BfS">
@@ -354,27 +372,27 @@
 
         <div class="exposure medical" style="top: calc(50vh + 52000px);" data-source="BfS" bfs-table="<br>DRW für interventionelle Eingriffe am Erwachsenen">
             <h2><span class="mSv-val">52,0 mSv</span> TACE / EVAR (einfach)</h2>
-            <p>Chemoembolisation oder Gefäßeingriffe (Leber/Aneurysmen). <br>DRW: 20000 cGy·cm²</p>
+            <p>Gefäßeingriffe an Leber oder Aorta. Hohe Dosis durch lange Durchleuchtung. <br>DRW: 20000 cGy·cm²</p>
         </div>
 
         <div class="exposure space" style="top: calc(50vh + 72000px);" data-source="Text">
-            <h2><span class="mSv-val">72 - 160 mSv</span> ISS Mission</h2>
-            <p>6 Monate auf der Raumstation. Abhängig von Sonnenaktivität.</p>
+            <h2><span class="mSv-val">72 - 160 mSv</span> ISS Mission (6 Monate)</h2>
+            <p>Langzeitaufenthalt auf der Raumstation. Abhängig von Sonnenaktivität.</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 78000px);" data-source="BfS" bfs-table="<br>DRW für interventionelle Eingriffe am Erwachsenen">
             <h2><span class="mSv-val">78,0 mSv</span> EVAR (komplex)</h2>
-            <p>Einsatz spezieller Prothesen bei Aortenprothesen. <br>DRW: 30000 cGy·cm²</p>
+            <p>Komplexer Einsatz von Aortenprothesen. <br>DRW: 30000 cGy·cm²</p>
         </div>
 
         <div class="exposure medical" style="top: calc(50vh + 100000px);" data-source="BfS">
             <h2><span class="mSv-val">100 mSv</span> Fetale Gefahrenschwelle</h2>
-            <p>Ab hier steigt das Risiko für Fehlbildungen signifikant.</p>
+            <p>Ab hier steigt das Risiko für Fehlbildungen beim Ungeborenen signifikant.</p>
         </div>
 
         <div class="exposure catastrophe" style="top: calc(50vh + 120000px);" data-source="Text">
             <h2><span class="mSv-val">120 mSv</span> Tschernobyl Liquidator</h2>
-            <p>Durchschnittsdosis der Aufräumarbeiter 1986.</p>
+            <p>Durchschnittsdosis der Aufräumarbeiter (Spanne 20 bis 500 mSv).</p>
         </div>
 
         <div class="exposure occupation" style="top: calc(50vh + 250000px);" data-source="Gesetz">
@@ -387,19 +405,24 @@
             <p>Höchste natürliche Strahlung weltweit (Jahresdosis in Hotspots).</p>
         </div>
 
-        <div class="exposure occupation" style="top: calc(50vh + 400000px);" data-source="BfS">
-            <h2><span class="mSv-val">400 mSv</span> Berufslebensdosis</h2>
-            <p>Zulässige Gesamtdosis über das gesamte Arbeitsleben in Deutschland.</p>
+        <div class="exposure catastrophe" style="top: calc(50vh + 309000px);" data-source="Text">
+            <h2><span class="mSv-val">bis 678 mSv</span> Fukushima Arbeiter</h2>
+            <p>Höchste gemessene Einzeldosen bei 6 Arbeitern während der Katastrophe 2011.</p>
         </div>
 
-        <div class="exposure space" style="top: calc(50vh + 1000000px);" data-source="Text">
-            <h2><span class="mSv-val">1.000 mSv</span> Mars-Mission / Akute Krankheit</h2>
-            <p>Gesamtdosis Marsflug. Auch: Beginn der Strahlenkrankheit (Übelkeit/Blutbild).</p>
+        <div class="exposure occupation" style="top: calc(50vh + 400000px);" data-source="BfS">
+            <h2><span class="mSv-val">400 mSv</span> Berufslebensdosis</h2>
+            <p>Maximal erlaubte Dosis über das gesamte Arbeitsleben in Deutschland.</p>
+        </div>
+
+        <div class="exposure space" style="top: calc(50vh + 600000px);" data-source="Text">
+            <h2><span class="mSv-val">600 mSv</span> Mars-Mission (Hin/Rück)</h2>
+            <p>Gesamtdosis für ca. 18 Monate im tiefen Weltraum (ohne Erdmagnetfeld).</p>
         </div>
 
         <div class="exposure catastrophe" style="top: calc(50vh + 1000000px);" data-source="Text">
-            <h2><span class="mSv-val">1.000 mSv</span> Hiroshima (1,1 km)</h2>
-            <p>Prompte Strahlung bei Detonation in 1,1 km Entfernung.</p>
+            <h2><span class="mSv-val">1.000 mSv</span> Hiroshima / Strahlenkrankheit</h2>
+            <p>Prompte Strahlung (1,1 km Distanz) oder Beginn der akuten Strahlenkrankheit.</p>
         </div>
 
         <div class="exposure catastrophe" style="top: calc(50vh + 1200000px);" data-source="Text">
@@ -414,7 +437,7 @@
 
         <div class="exposure industrial" style="top: calc(50vh + 5300000px);" data-source="Text">
             <h2><span class="mSv-val">5.300 mSv</span> Goiânia Unfall</h2>
-            <p>Tödliche Dosis eines Opfers durch eine gestohlene Cs-137 Quelle.</p>
+            <p>Tödliche Dosis eines Opfers durch eine gestohlene Cs-137 Klinik-Quelle.</p>
         </div>
 
         <div class="exposure catastrophe" style="top: calc(50vh + 8000000px);" data-source="BfS">
@@ -434,7 +457,7 @@
 
         <div class="exposure medical" style="top: calc(50vh + 60000000px);" data-source="Text">
             <h2><span class="mSv-val">60.000 mSv</span> Lokale Strahlentherapie</h2>
-            <p>Lokale Herddosis zur Tumorzerstörung (20-80 Gy). Tödlich als Ganzkörperdosis.</p>
+            <p>Lokale Herddosis zur Tumorzerstörung (20-80 Gy). Als Ganzkörperdosis sofort tödlich.</p>
         </div>
 
     </div>
